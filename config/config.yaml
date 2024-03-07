@@ -1,10 +1,10 @@
 INPUT_FILESNAME:
-  CHARGS_USE: "data/chargs_use.csv"
-  DAMAGES_USE: "data/damages_use.csv"
-  ENDORSE_USE: "data/endorse_use.csv" 
-  PRIMARY_PERSON_USE: "data/primary_person_use.csv"
-  RESTRICT_USE: "data/restrict_use.csv"
-  UNITS_USE: "data/units_use.csv"
+  CHARGES_USE: "data/Charges_use.csv"
+  DAMAGES_USE: "data/Damages_use.csv"
+  ENDORSE_USE: "data/Endorse_use.csv" 
+  PRIMARY_PERSON_USE: "data/Primary_Person_use.csv"
+  RESTRICT_USE: "data/Restrict_use.csv"
+  UNITS_USE: "data/Units_use.csv"
 
 OUTPUT_PATH:
  CASE_STUDY_JOB: "output/case_study_job.csv"

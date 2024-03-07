@@ -48,7 +48,7 @@ class CaseStudyAnalysis:
     def __init__(self, spark, config):
         files_path = config.get("INPUT_FILESNAME")
         file_format = config.get("FILE_FORMATS").get("INPUT")
-        self.charges_use = read_csv(spark, files_path.get("CHANGES_USE"), file_format)
+        self.charges_use = read_csv(spark, files_path.get("CHARGES_USE"), file_format)
         self.damages_use = read_csv(spark, files_path.get("DAMAGES_USE"), file_format)
         self.endorse_use = read_csv(spark, files_path.get("ENDORSE_USE"), file_format)
         self.primary_person_use = read_csv(
@@ -174,10 +174,10 @@ class CaseStudyAnalysis:
             .count()
             .orderBy(F.col("count").desc())
             .select(constants.DRVR_LIC_STATE_ID)
-            .first()
         )
 
-        return [row[0] for row in drvr_df.collect()]
+        # Return the first state name
+        return [drvr_df.first()[constants.DRVR_LIC_STATE_ID]]
 
     def analyse_injuries_by_vehicle_make(self) -> list:
         """
@@ -202,7 +202,7 @@ class CaseStudyAnalysis:
         # Group by "VEH_MAKE_ID" and aggregate the sum of total injuries including death
         result_df = (
             joined_df.groupBy(constants.VEH_MAKE_ID)
-            .agg(sum(F.col("TOT_INJRY_INCLUDING_DEATH")).alias("TOTAL_INJRY"))
+            .agg(F.sum(F.col("TOT_INJRY_INCLUDING_DEATH")).alias("TOTAL_INJRY"))
             .orderBy(F.col("TOTAL_INJRY").desc())
             .select(constants.VEH_MAKE_ID)
         )
