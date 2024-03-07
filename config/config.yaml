@@ -1,0 +1,14 @@
+INPUT_FILESNAME:
+  CHARGS_USE: "data/chargs_use.csv"
+  DAMAGES_USE: "data/damages_use.csv"
+  ENDORSE_USE: "data/endorse_use.csv" 
+  PRIMARY_PERSON_USE: "data/primary_person_use.csv"
+  RESTRICT_USE: "data/restrict_use.csv"
+  UNITS_USE: "data/units_use.csv"
+
+OUTPUT_PATH:
+
+
+FILE_FORMATS:
+  INPUT: "csv"
+  OUTPUT: "csv"

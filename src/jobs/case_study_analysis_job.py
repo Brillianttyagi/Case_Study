@@ -41,12 +41,13 @@ class CaseStudyAnalysis:
     """
 
     def __init__(self, spark, config):
-        self.changes_use = read_csv(spark, config.get("CHANGES_USE"))
-        self.damages_use = read_csv(spark, config.get("DAMAGES_USE"))
-        self.endorse_use = read_csv(spark, config.get("ENDORSE_USE"))
-        self.primary_person_use = read_csv(spark, config.get("PRIMARY_PERSON_USE"))
-        self.restrict_use = read_csv(spark, config.get("RESTRICT_USE"))
-        self.units_use = read_csv(spark, config.get("UNITS_USE"))
+        files_path = config.get("INPUT_FILESNAME")
+        self.changes_use = read_csv(spark, files_path.get("CHANGES_USE"))
+        self.damages_use = read_csv(spark, files_path.get("DAMAGES_USE"))
+        self.endorse_use = read_csv(spark, files_path.get("ENDORSE_USE"))
+        self.primary_person_use = read_csv(spark, files_path.get("PRIMARY_PERSON_USE"))
+        self.restrict_use = read_csv(spark, files_path.get("RESTRICT_USE"))
+        self.units_use = read_csv(spark, files_path.get("UNITS_USE"))
 
     def count_crashes_where_males_killed(self) -> int:
         """
