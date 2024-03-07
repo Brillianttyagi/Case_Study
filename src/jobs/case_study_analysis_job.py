@@ -4,7 +4,7 @@ which performs various analysis on case study data.
 """
 
 import pyspark.sql.functions as F
-from pyspark.sql.types import IntegerType, StringType, StructField, StructType
+from pyspark.sql.types import StringType, StructField, StructType
 from pyspark.sql.window import Window
 
 from src.constants import constants
@@ -436,7 +436,7 @@ class CaseStudyAnalysis:
         # Define the schema for the DataFrame
         schema = StructType(
             [
-                StructField("analysis_no", IntegerType(), True),
+                StructField("analysis_no", StringType(), True),
                 StructField("result", StringType(), True),
             ]
         )
