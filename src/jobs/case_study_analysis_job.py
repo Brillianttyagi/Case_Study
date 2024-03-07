@@ -125,7 +125,7 @@ class CaseStudyAnalysis:
             .select(constants.VEH_MAKE_ID)
         )
 
-        return [row[0] for row in veh_df.collect()]
+        return [str(row[0]) for row in veh_df.collect()]
 
     def count_vehicles_with_special_conditions(self) -> int:
         """
@@ -210,7 +210,7 @@ class CaseStudyAnalysis:
         # Return the result DataFrame with the top 3 to 5 vehicle makes
         veh_df = result_df.limit(5).subtract(result_df.limit(2))
 
-        return [row[0] for row in veh_df.collect()]
+        return [str(row[0]) for row in veh_df.collect()]
 
     def clean_and_aggregate_data(self) -> list:
         """
@@ -259,7 +259,7 @@ class CaseStudyAnalysis:
             .drop("row", "count")
         )
 
-        return [(row[0], row[1]) for row in veh_df.collect()]
+        return [(str(row[0]), str(row[1])) for row in veh_df.collect()]
 
     def analyse_alcohol_contributions(self) -> list:
         """
@@ -288,7 +288,7 @@ class CaseStudyAnalysis:
             .limit(5)
         )
 
-        return [row[0] for row in drvr_df.collect()]
+        return [str(row[0]) for row in drvr_df.collect()]
 
     def filter_units_and_damages(self) -> list:
         """
@@ -352,7 +352,7 @@ class CaseStudyAnalysis:
             damage_use_filtered, constants.CRASH_ID, "inner"
         ).select(constants.CRASH_ID)
 
-        return [row[0] for row in crsh_df.collect()]
+        return [str(row[0]) for row in crsh_df.collect()]
 
     def analyse_units_charges(self) -> list:
         """
@@ -420,7 +420,7 @@ class CaseStudyAnalysis:
             .limit(5)
         )
 
-        return [row[0] for row in veh_df.collect()]
+        return [str(row[0]) for row in veh_df.collect()]
 
     def save_format_csv(self, analysis_set) -> None:
         """
@@ -457,10 +457,10 @@ class CaseStudyAnalysis:
         Returns:
         None
         """
-        analysis_1_output = self.count_crashes_where_males_killed()
-        analysis_2_output = self.count_two_wheelers_crashes()
+        analysis_1_output = str(self.count_crashes_where_males_killed())
+        analysis_2_output = str(self.count_two_wheelers_crashes())
         analysis_3_output = ",".join(self.analyse_fatal_crashes())
-        analysis_4_output = self.count_vehicles_with_special_conditions()
+        analysis_4_output = str(self.count_vehicles_with_special_conditions())
         analysis_5_output = ",".join(self.drivers_by_license_state())
         analysis_6_output = ",".join(self.analyse_injuries_by_vehicle_make())
         analysis_7_output = ",".join(
