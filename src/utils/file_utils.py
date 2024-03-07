@@ -49,4 +49,6 @@ def write_csv(df: DataFrame, path: str, fileformat: str) -> None:
         path: The path to the output CSV file.
         fileformat: The format of the file, e.g., "csv", "parquet", etc.
     """
-    df.write.format(fileformat).mode("overwrite").option("header", "true").save(path)
+    df.repartition(1).write.format(fileformat).mode("overwrite").option(
+        "header", "true"
+    ).save(path)

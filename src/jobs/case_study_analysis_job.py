@@ -468,7 +468,7 @@ class CaseStudyAnalysis:
         analysis_9_output = ",".join(self.filter_units_and_damages())
         analysis_10_output = ",".join(self.analyse_units_charges())
 
-        analysis_set = (
+        analysis_set = [
             ("Analysis 1", analysis_1_output),
             ("Analysis 2", analysis_2_output),
             ("Analysis 3", analysis_3_output),
@@ -479,7 +479,7 @@ class CaseStudyAnalysis:
             ("Analysis 8", analysis_8_output),
             ("Analysis 9", analysis_9_output),
             ("Analysis 10", analysis_10_output),
-        )
+        ]
         # save the results to a file
         self.save_format_csv(analysis_set)
         # Print the results
