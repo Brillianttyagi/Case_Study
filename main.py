@@ -9,7 +9,7 @@ from src.jobs.case_study_analysis_job import CaseStudyAnalysis
 from src.utils.file_utils import read_yaml
 
 if __name__ == "__main__":
-    spark = SparkSession.builder.appName("Case Study Analysis").getOrCreate()
+    spark = SparkSession.builder.appName("Case_Study_Analysis").getOrCreate()
 
     # Set the log level to ERROR to avoid too much output
     spark.sparkContext.setLogLevel("ERROR")
