@@ -7,6 +7,7 @@ INPUT_FILESNAME:
   UNITS_USE: "data/units_use.csv"
 
 OUTPUT_PATH:
+ CASE_STUDY_JOB: "output/case_study_job.csv"
 
 
 FILE_FORMATS:
