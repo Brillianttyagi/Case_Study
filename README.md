@@ -130,3 +130,4 @@ If you have any questions or suggestions, feel free to open an issue or contact 
 - We can also add seprate utils for running this on gcp dataproc as well as on aws emr.
 - We can also add the test cases for the spark jobs.
 - We can also add cloud reading and writing capabilities to the spark jobs.
+- We can also add the more logging and monitoring to the spark jobs.
