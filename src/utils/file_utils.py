@@ -1,3 +1,7 @@
+"""
+This module provides utility functions for working with files.
+"""
+
 import yaml
 from pyspark.sql import DataFrame
 
