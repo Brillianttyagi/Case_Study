@@ -65,17 +65,68 @@ Here is the schema for the data:
    ```bash
    pip install -r requirements.txt
    ```
-3. **Unzip or move all data files in the data folder**
-3. **Run the following command:**
+5. **Unzip or move all data files in the data folder**
+6. **Run the following command:**
    ```bash
    make build  # To build the egg file
    make run    # To run the Spark job
    make help   # To display the available targets and their descriptions
    ```
-4. **The results will be saved in the output folder**
+7. **After build you can also run this analysis using spark-submit**
+   ```bash
+   spark-submit --master "local[*]" --py-files dist/BCG_Analysis-0.0.1-py3.10.egg main.py
+   ```
+8. **The results will be saved in the output folder**
 
 ## Author
 
 [Deepanshu Tyagi](https://github.com/Brillianttyagi)
 
 ## Assumptions of output format
+
+I have assumed that the output of the analysis will be saved in the output folder in the form of csv file.
+
+```bash
+| Analysis No | Result                                               |
+|-------------|------------------------------------------------------|
+| Analysis 1  | 0                                                    |
+| Analysis 2  | 784                                                |
+| Analysis 3  | CHEVROLET, FORD, DODGE, FREIGHTLINER, NISSAN          |
+| Analysis 4  | 6359                                               |
+| Analysis 5  | Texas                                              |
+| Analysis 6  | TOYOTA, DODGE, NISSAN                               |
+| Analysis 7  | AMBULANCE: WHITE, BUS: HISPANIC, FARM EQUIPMENT: WHITE, FIRE TRUCK: WHITE, MOTORCYCLE: WHITE, NEV-NEIGHBORHOOD ELECTRIC VEHICLE: WHITE, PASSENGER CAR, 2-DOOR: WHITE, PASSENGER CAR, 4-DOOR: WHITE, PICKUP: WHITE, POLICE CAR/TRUCK: WHITE, POLICE MOTORCYCLE: HISPANIC, SPORT UTILITY VEHICLE: WHITE, TRUCK: WHITE, TRUCK TRACTOR: WHITE, VAN: WHITE, YELLOW SCHOOL BUS: WHITE |
+| Analysis 8  | 76010, 78521, 75067, 78574, 75052                   |
+| Analysis 9  |                                                      |
+| Analysis 10 | FORD, CHEVROLET, TOYOTA, DODGE, NISSAN                |
+
+```
+
+**Note: We can save output in any format as per the requirement.**
+
+## Assumptions for the analysis
+
+- In Analysis 9 I have assumed these car insurance are valid insurances.
+
+```python
+        [
+            "INSURANCE BINDER",
+            "LIABILITY INSURANCE POLICY",
+            "CERTIFICATE OF SELF-INSURANCE",
+            "CERTIFICATE OF DEPOSIT WITH COUNTY JUDGE",
+            "CERTIFICATE OF DEPOSIT WITH COMPTROLLER",
+            "SURETY BOND",
+            "PROOF OF LIABILITY INSURANCE"
+        ]
+```
+
+- In Analysis 9 Damage Level (VEH_DMAG_SCL~) is above 4 for VEH_DMAG_SCL_1_ID and VEH_DMAG_SCL_2_ID.
+
+
+If you have any questions or suggestions, feel free to open an issue or contact me on [Deepanshu Tyagi](https://github.com/Brillianttyagi).
+
+## Future Scope
+
+- We can also add seprate utils for running this on gcp dataproc as well as on aws emr.
+- We can also add the test cases for the spark jobs.
+- We can also add cloud reading and writing capabilities to the spark jobs.
