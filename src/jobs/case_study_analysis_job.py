@@ -259,7 +259,7 @@ class CaseStudyAnalysis:
             .drop("row", "count")
         )
 
-        return [row[0] for row in veh_df.collect()]
+        return [(row[0], row[1]) for row in veh_df.collect()]
 
     def analyse_alcohol_contributions(self) -> list:
         """
@@ -463,7 +463,9 @@ class CaseStudyAnalysis:
         analysis_4_output = self.count_vehicles_with_special_conditions()
         analysis_5_output = ",".join(self.drivers_by_license_state())
         analysis_6_output = ",".join(self.analyse_injuries_by_vehicle_make())
-        analysis_7_output = ",".join(self.clean_and_aggregate_data())
+        analysis_7_output = ",".join(
+            [f"{row[0]}: {row[1]}" for row in self.clean_and_aggregate_data()]
+        )
         analysis_8_output = ",".join(self.analyse_alcohol_contributions())
         analysis_9_output = ",".join(self.filter_units_and_damages())
         analysis_10_output = ",".join(self.analyse_units_charges())
